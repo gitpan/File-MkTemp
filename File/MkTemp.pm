@@ -1,36 +1,32 @@
 #############################################################
-# File/MkTemp.pm. Written in 1999 by Travis Gummels.
+# File/MkTemp.pm. Written in 1999|2000 by Travis Gummels.
 # If you find problems with this please let me know.
 # travis@gummels.com
 #############################################################
 
 package File::MkTemp;
 
+require Exporter;
+
 use strict;
+
+use vars qw($VERSION @ISA @EXPORT);
+
 use FileHandle;
 use File::Spec;
 use Carp;
 
-use vars qw($VERSION @ISA @EXPORT_OK);
-
-require Exporter;
-
 @ISA=qw(Exporter);
-@EXPORT_OK=qw(mktemp mkstemp mkstempt);
+@EXPORT=qw(mktemp mkstemp mkstempt);
 
-$File::MkTemp::VERSION = '1.0.5';
-
-sub VERSION {
-   # Version of File::MkTemp
-   return $File::MkTemp::VERSION;
-}
+$VERSION = '1.0.6';
 
 sub mkstempt {
    my ($template,$openup,$fh);
    my @retval;
 
-   croak("Usage: mkstempt('templateXXXXXX','dir') ")
-      unless(@_ == 2);
+   croak("Usage: mkstempt('templateXXXXXX','dir',['ext']) ")
+      unless(@_ == 2 || @_ == 3);
 
    $template = mktemp(@_);
 
@@ -49,8 +45,8 @@ sub mkstempt {
 sub mkstemp {
    my ($template,$openup,$fh);
 
-   croak("Usage: mkstemp('templateXXXXXX','dir') ")
-      unless(@_ == 2);
+   croak("Usage: mkstemp('templateXXXXXX','dir',['ext']) ")
+      unless(@_ == 2 || @_ == 3);
 
    $template = mktemp(@_);
 
@@ -65,13 +61,13 @@ sub mkstemp {
 }
 
 sub mktemp {
-   my ($template,$dir,$keepgen,$lookup);
+   my ($template,$dir,$ext,$keepgen,$lookup);
    my (@template,@letters);
 
-   croak("Usage: mktemp('templateXXXXXX',['dir']) ") 
-     unless(@_ == 1 || @_ == 2);
+   croak("Usage: mktemp('templateXXXXXX',['/dir'],['ext']) ") 
+     unless(@_ == 1 || @_ == 2 || @_ == 3);
 
-   ($template,$dir) = @_;
+   ($template,$dir,$ext) = @_;
    @template = split //, $template;
 
    croak("The template must end with at least 6 uppercase letter X")
@@ -93,6 +89,8 @@ sub mktemp {
       undef $template;
 
       $template = pack "a" x @template, @template;
+
+      $template = $template . $ext if ($ext);
 
          if ($dir){
             $lookup = File::Spec->catfile($dir, $template);
@@ -162,9 +160,9 @@ Please send bug reports and or comments to: travis@gummels.com
 
 =head1 COPYRIGHT
 
-Copyright 1999, Travis Gummels.  All rights reserved.  This may be 
+Copyright 1999|2000 Travis Gummels.  All rights reserved.  This may be 
 used and modified however you want.  If you redistribute after making 
 modifications please note modifications you made somewhere in the
-distribution.
+distribution and notify the author.
 
 =cut
