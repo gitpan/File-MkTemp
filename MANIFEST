@@ -2,4 +2,7 @@ Makefile.PL
 MANIFEST
 README
 CHANGES
-MkTemp.pm
+File/MkTemp.pm
+File/MkTempO.pm
+t/MkTemp.t
+t/MkTempO.t
