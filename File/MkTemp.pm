@@ -18,7 +18,7 @@ require Exporter;
 @ISA=qw(Exporter);
 @EXPORT_OK=qw(mktemp mkstemp mkstempt);
 
-$File::MkTemp::VERSION = '1.0.4';
+$File::MkTemp::VERSION = '1.0.5';
 
 sub VERSION {
    # Version of File::MkTemp
@@ -133,7 +133,7 @@ File::MkTemp - Make temporary filename from template
 
   mkstempt(tempXXXXXX,dir);
 
-  ($fh,$template) = mkstemp(tempXXXXXX,dir);
+  ($fh,$template) = mkstempt(tempXXXXXX,dir);
   print $fh "stuff";
   $fh->close;
   print "Template is: $template\n";

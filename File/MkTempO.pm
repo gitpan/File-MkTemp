@@ -17,7 +17,7 @@ use strict;
 @ISA=qw(Exporter);
 @EXPORT_OK=qw(mktemp mkstemp);
 
-$File::MkTemp::VERSION = '1.0.4';
+$File::MkTemp::VERSION = '1.0.5';
 
 sub VERSION {
    # Version of File::MkTemp
