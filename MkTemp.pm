@@ -16,7 +16,7 @@ use Carp;
 @EXPORT=qw(mktemp mkstemp);
 @EXPORT_OK=qw(mktemp mkstemp);
 
-$File::MkTemp::VERSION = '1.0.2';
+$File::MkTemp::VERSION = '1.0.3';
 
 sub VERSION {
    # Version of File::MkTemp
