@@ -1,0 +1,3 @@
+Just do a make install, nothing here needs to be built.
+Afterwords do make clean or just delete the directory.
+TTG
