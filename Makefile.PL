@@ -35,7 +35,8 @@ EOM
 use ExtUtils::MakeMaker;
 WriteMakefile(NAME => 'File::MkTemp',
 	      SKIP => [qw(xs_c xs_o c_o dynamic static)],
-	      VERSION => '1.0.1',
+	      VERSION_FROM => 'MkTemp.pm',
+              PM => 'MkTemp.pm',
               clean => {FILES=>q[file* errs]});
 
 package MY;

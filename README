@@ -1,10 +1,66 @@
-You need to have the File::Spec module installed before
-you can install File::MkTemp.  Please pull the latest
-copy from CPAN.
+File::MkTemp 1.0.2 -- Module to create unique strings for use as file/directory
+                      names etc.
 
-After installing File::Spec just do a perl Makefile.PL
-followed by a make install.
+Copyright 1999, Travis Gummels.  All rights reserved.  This may be 
+used and modified however you want.  If you redistribute after making 
+modifications please note modifications you made somewhere in the
+distribution.
 
-Afterwords do make clean or just delete the directory.
 
-TTG
+If you use this with perl earlier than 5.005 you will need to obtain
+the File::Spec module.
+
+To install this module:
+
+	perl Makefile.PL
+	make install
+
+Now be good and clean up:
+        make realclean
+   or
+        delete the directory:)
+
+Here is the POD:
+
+NAME
+    File::MkTemp - Make temporary filename from template
+
+SYNOPSIS
+            use File::MkTemp;
+
+            mktemp(tempXXXXXX,[dir]);
+
+            $string = mktemp(tempXXXXXX,[dir]);
+            open(F,$string);
+
+            
+            mkstemp(tempXXXXXX,dir);
+
+            $fh = mkstemp(tempXXXXXX,dir);
+            print $fh "stuff";
+            $fh->close;
+
+DESCRIPTION
+    The MkTemp module provides two functions mktemp() and mkstemp().
+
+    The function mktemp() returns a unique string based upon the template.
+    The template must contain at least six trailing Xs. The Xs are replaced
+    by a unique string and the template is returned. The unique string is
+    made from picking random elements out of a 52 alpha character array ([a-
+    z][A-Z]). A directory can be specified in which to test for duplicates
+    of the string.
+
+    The function mkstemp() does the same as mktemp() except it returns an
+    open file handle. This prevents any possibility of opening up an
+    identical file. The function requires that the directory be specified.
+
+AUTHOR
+    File::MkTemp was written by Travis Gummels. Please send bug reports and
+    or comments to: travis@gummels.com
+
+COPYRIGHT
+    Copyright 1999, Travis Gummels. All rights reserved. This may be used
+    and modified however you want. If you redistribute after making
+    modifications please note modifications you made somewhere in the
+    distribution.
+

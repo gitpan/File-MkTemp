@@ -1,3 +1,7 @@
-1.0.1
-Mar 15 1999 - Added File::Spec so as to build lookup string (dir/file) correctly
-for multiple platforms/os
+1.0.2 - Changed from File::Spec::Functions to File::Spec->catfile.  This allows
+        backward compat for older File::Spec module.
+        Added mkstemp() function that returns an open file handle.
+        Corrected $keepgen = 0 to $keepgen == 0 at the next stmt.
+1.0.1 - Started using File::Spec to create the directory/tempfile string.
+        This is better so that the function can be used on different os.
+1.0.0 - First release to public.  mktemp() function.
