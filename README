@@ -1,3 +1,10 @@
-Just do a make install, nothing here needs to be built.
+You need to have the File::Spec module installed before
+you can install File::MkTemp.  Please pull the latest
+copy from CPAN.
+
+After installing File::Spec just do a perl Makefile.PL
+followed by a make install.
+
 Afterwords do make clean or just delete the directory.
+
 TTG

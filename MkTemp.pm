@@ -5,13 +5,15 @@
 package File::MkTemp;
 
 require Exporter;
+
+use File::Spec::Functions;
 use Carp;
 
 @ISA=qw(Exporter);
 @EXPORT=qw(mktemp);
 @EXPORT_OK=qw(mktemp);
 
-$File::MkTemp::VERSION = '1.0.0';
+$File::MkTemp::VERSION = '1.0.1';
 
 sub VERSION {
     # Version of File::MkTemp
@@ -47,7 +49,7 @@ sub mktemp {
        $template = pack "a" x @template, @template;
 
           if ($dir){
-             my $lookup = $dir . "/" . $template;
+             my $lookup = catfile($dir, $template);
              $keepgen = 0 unless (-e $lookup);
           }else{
              $keepgen = 0;

@@ -1,0 +1,3 @@
+1.0.1
+Mar 15 1999 - Added File::Spec so as to build lookup string (dir/file) correctly
+for multiple platforms/os

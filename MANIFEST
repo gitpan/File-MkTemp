@@ -1,4 +1,5 @@
 Makefile.PL
 MANIFEST
 README
+CHANGES
 MkTemp.pm
